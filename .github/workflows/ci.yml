@@ -37,7 +37,7 @@ jobs:
         run:
           bundler exec rspec spec
       - name: Upload coverage results    
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         if: always()
         with:
           name: coverage-report
