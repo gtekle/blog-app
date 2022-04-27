@@ -22,6 +22,10 @@ To get a local copy up and running follow these simple example steps.
 
 > - Run `git clone https://github.com/gtekle/blog-app.git`
 > - Run `cd blog-app` to change to project root directory
+> - Run `bundle install`
+> - Run `rails db:create`
+> - Run `rails db:migrate`
+> - Run `npm install`
 > - Run `rails s` to run the app
 > - Opn `http://localhost:3000/` on your browser
 
