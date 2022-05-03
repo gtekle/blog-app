@@ -9,11 +9,10 @@
   <% if @user.posts.nil? || @user.posts.empty?%>
     <li> No posts available from <%= @user.name %>, yet! </li>
   <%end%>
-  <% @user.most_recent_posts&.each_with_index do |post, indx|
-    next unless indx < 2 %>
+  <% @user.posts&.each_with_index do |post, indx|%>
     <li>
       <div class="post-info">
-        <p class="user-post-heading"> Post #<%= indx + 1 %> </p>
+        <p class="user-post-heading">Post #<%= (indx + 1) %> </p>
         <p class="post_text"><%= post.text %></p>
         <p class="comment-counter">
           comments: <%= post.comments_counter %>,
