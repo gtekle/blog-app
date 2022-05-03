@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
   describe 'GET "/users/1/posts"' do
-    before(:example) { get '/users/1/posts' }
+    before(:example) do
+      user = User.create(name: 'Peter', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
+      Post.create(author: user, title: 'Hello', text: 'This is my first post')
+      get "/users/#{user.id}/posts"
+    end
 
     it 'is a success' do
       expect(response).to have_http_status(:ok)
@@ -13,12 +17,16 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'page contains text' do
-      expect(response.body).to include('Here are list of posts by user 1')
+      expect(response.body).to include('Peter')
     end
   end
 
-  describe 'GET "/users/1/posts/1"' do
-    before(:example) { get '/users/1/posts/2' }
+  describe 'GET "/users/1/posts/9"' do
+    before(:example) do
+      user = User.create(name: 'Peter', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
+      post = Post.create(author: user, title: 'Hello', text: 'This is my first post')
+      get "/users/#{user.id}/posts/#{post.id}"
+    end
 
     it 'is a success' do
       expect(response).to have_http_status(:ok)
@@ -29,7 +37,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'page contains text' do
-      expect(response.body).to include('Here is a page for post with id 2 by user 1')
+      expect(response.body).to include('Post')
     end
   end
 end

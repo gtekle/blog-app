@@ -1,0 +1,47 @@
+.post-comments-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  border: 1px solid grey;
+}
+
+.post-comments-list li {
+  padding: 5px;
+}
+
+.post-comments-list li .comment-author {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.post-details {
+  margin-top: 2rem;
+}
+
+.post-details .post-info,
+.post-details .comments-list {
+  border: 1px solid grey;
+  padding: 0 15px;
+}
+
+.post-details .post-info .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-details .post-info .header p {
+  margin-top: 5px;
+}
+
+.post-details .comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
+}
+
+.post-details .comments-list .author {
+  font-size: 16px;
+  font-weight: 600;
+}

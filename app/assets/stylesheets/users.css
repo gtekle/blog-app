@@ -1,0 +1,127 @@
+.users-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.user-section > * {
+  flex: 1;
+}
+
+.users-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.user-details img,
+.users-list li img {
+  max-width: 10%;
+  flex: 1;
+  border: 1px solid blue;
+  padding: 8px;
+}
+
+.users-list .user-info,
+.user-details .user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid blue;
+  flex: 3;
+  padding: 0 1rem;
+}
+
+.users-list .user_name,
+.user-details .user_name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.users-list .user_post-counter,
+.user-details .user_post-counter {
+  align-self: flex-end;
+}
+
+.users-list .user-info a {
+  text-decoration: none;
+}
+
+.user-details {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.bio-container {
+  border: 1px solid blue;
+  margin: 8px 0;
+  padding: 0 10px;
+}
+
+.user-recent-posts,
+.user-posts {
+  list-style: none;
+  padding: 0;
+}
+
+.user-recent-posts li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  padding: 3px 10px;
+}
+
+.user-recent-posts li + li {
+  margin-top: 8px;
+}
+
+.user-recent-posts li p + p {
+  margin: 0;
+}
+
+.user-recent-posts li .user-post-heading {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.user-recent-posts li .comment-counter {
+  align-self: flex-end;
+}
+
+.see-all-posts {
+  align-self: center;
+  text-decoration: none;
+  border: 1px solid blue;
+  border-radius: 5px;
+  box-shadow: 8px 4px 4px rgb(136, 191, 209);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.user-posts .post-info {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  margin: 15px 0 2px 0;
+  padding: 5px;
+}
+
+.user-posts li .post-info .user-post-heading {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.user-posts li .post-info p + p {
+  margin: 0;
+}
+
+.user-posts li .post-info .comment-counter {
+  align-self: flex-end;
+  justify-self: flex-end;
+}

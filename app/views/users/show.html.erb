@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Here is a page for user <%= params[:id] %></p>
+<section class="user-section">
+  <div class="user-details">
+    <img src=<%= @user.photo %> alt="<%= @user.name%>'s profile picture" />
+    <div class="user-info">
+      <p class="user_name"><%= @user.name %></p>
+      <p class="user_post-counter">Number of posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+  <div class="bio-container">
+    <h3> Bio </h3>
+    <p> <%= @user.bio%></p>
+  </div>
+  <ul class="user-recent-posts">
+    <% if @user.posts.nil? || @user.posts.empty?%>
+      <li> No posts available from <%= @user.name %>, yet! </li>
+    <%end%>
+    <% @user.most_recent_posts&.each_with_index do |post, indx|%>
+      <li>
+        <p class="user-post-heading"> Post #<%= indx + 1 %> </p>
+        <p class="post_text"><%= post.text %></p>
+        <p class="comment-counter">
+          comments: <%= post.comments_counter %>,
+          likes: <%= post.likes_counter %>
+        </p>
+      </li>
+    <%end%>
+  </ul>
+  <a href="/users/<%= @user.id %>/posts" class="see-all-posts">See all posts </a>
+</section>
