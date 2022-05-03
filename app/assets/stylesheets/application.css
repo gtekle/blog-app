@@ -14,12 +14,12 @@
  *= require_self
  */
 
- body {
-   max-width: 90%;
-   margin: auto;
- }
+body {
+  max-width: 90%;
+  margin: auto;
+}
 
- img {
-    width: 100%;
-    height: auto;
- }
+img {
+  width: 100%;
+  height: auto;
+}
