@@ -1,0 +1,43 @@
+.users-list {
+   list-style: none;
+   padding: 0;
+ }
+
+ .users-list li {
+   display: flex;
+   gap: 1rem;
+   padding: 1rem;
+ }
+
+ .users-list li img,
+ .user-details img  {
+   max-width: 10%;
+   flex: 1;
+   border: 1px solid blue;
+   padding: 8px;
+ }
+
+ .users-list .user-info ,
+ .user-details .user-info {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border: 1px solid blue;
+   flex: 3;
+   padding: 0 1rem;
+ }
+
+ .users-list .user_name {
+   font-size: 1.5rem;
+   font-weight: 600;
+ }
+
+ .users-list .user_post-counter {
+   align-self: flex-end;
+ }
+
+ .user-details {
+   display: flex;
+   gap: 1rem;
+   margin-top: 2rem;
+ }
