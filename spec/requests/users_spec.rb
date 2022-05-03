@@ -13,12 +13,15 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'page contains text' do
-      expect(response.body).to include('Here is a list of users')
+      expect(response.body).to include('ALL USERS')
     end
   end
 
   describe 'GET /users/1' do
-    before(:example) { get '/users/1' }
+    before(:example) do
+      user = User.create(name: 'Peter', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
+      get "/users/#{user.id}"
+    end
 
     it 'is a success' do
       expect(response).to have_http_status(:ok)
@@ -29,7 +32,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'page contains text' do
-      expect(response.body).to include('Here is a page for user 1')
+      expect(response.body).to include('Peter')
     end
   end
 end
