@@ -26,7 +26,6 @@ RSpec.describe 'Posts', type: :request do
       user = User.create(name: 'Peter', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
       post = Post.create(author: user, title: 'Hello', text: 'This is my first post')
       get "/users/#{user.id}/posts/#{post.id}"
-      # get '/users/1/posts/9'
     end
 
     it 'is a success' do

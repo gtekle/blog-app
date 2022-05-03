@@ -48,6 +48,10 @@
   align-self: flex-end;
 }
 
+.users-list .user-info a {
+  text-decoration: none;
+}
+
 .user-details {
   display: flex;
   gap: 1rem;
