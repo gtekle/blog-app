@@ -60,7 +60,8 @@
   padding: 0 10px;
 }
 
-.user-recent-posts {
+.user-recent-posts,
+.user-posts {
   list-style: none;
   padding: 0;
 }
@@ -97,4 +98,26 @@
   box-shadow: 8px 4px 4px rgb(136, 191, 209);
   padding: 5px;
   cursor: pointer;
+}
+
+.user-posts .post-info {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  margin: 15px 0 2px 0;
+  padding: 5px;
+}
+
+.user-posts li .post-info .user-post-heading {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.user-posts li .post-info p + p {
+  margin: 0;
+}
+
+.user-posts li .post-info .comment-counter {
+  align-self: flex-end;
+  justify-self: flex-end;
 }
