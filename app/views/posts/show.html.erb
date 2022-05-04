@@ -13,7 +13,14 @@
     </div>
     <p class="post_text"><%= @post.text %></p>
   </div>
-  <h3> Comments </h3>
+  <div class="comment-like-container">
+    <h3> Comments </h3>
+      <%= form_with model: [ @post.author, @post, @post.likes.build ] do |form| %>
+      <%= button_tag( :class => "btn-like") do %>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </div>
   <ul class="comments-list">
     <% if @post.comments.nil? || @post.comments.empty?%>
       <li> No comments, yet! Be the first to comment!</li>
