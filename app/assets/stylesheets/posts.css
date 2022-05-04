@@ -45,3 +45,22 @@
   font-size: 16px;
   font-weight: 600;
 }
+
+.create-new-post {
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.create-new-post a {
+  text-decoration: none;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.create-new-post a:hover {
+  background-color: blue;
+  color: #fff;
+}
