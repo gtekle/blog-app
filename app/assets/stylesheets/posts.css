@@ -1,4 +1,5 @@
-.post-comments-list {
+.post-comments-list,
+.comments-list {
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -6,11 +7,13 @@
   border: 1px solid grey;
 }
 
-.post-comments-list li {
+.post-comments-list li,
+.comments-list li {
   padding: 5px;
 }
 
-.post-comments-list li .comment-author {
+.post-comments-list li .comment-author,
+.comments-list li .comment-author {
   font-size: 16px;
   font-weight: 600;
 }

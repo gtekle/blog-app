@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    redirect_to "/users/#{params[:user_id]}/posts/#{@post.id}"
+    redirect_to user_post_path(User.find(params[:user_id]), @post)
   end
 
   private
