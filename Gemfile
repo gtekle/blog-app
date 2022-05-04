@@ -50,7 +50,7 @@ gem 'bootsnap', require: false
 
 gem 'rack-cors'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

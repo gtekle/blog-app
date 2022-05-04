@@ -48,6 +48,19 @@
   align-self: flex-end;
 }
 
+.see-all-posts {
+  align-self: center;
+  border: 1px solid blue;
+  border-radius: 5px;
+  box-shadow: 8px 4px 4px rgb(136, 191, 209);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.see-all-posts a {
+  text-decoration: none;
+}
+
 .users-list .user-info a {
   text-decoration: none;
 }
@@ -92,19 +105,6 @@
 
 .user-recent-posts li .comment-counter {
   align-self: flex-end;
-}
-
-.see-all-posts {
-  align-self: center;
-  border: 1px solid blue;
-  border-radius: 5px;
-  box-shadow: 8px 4px 4px rgb(136, 191, 209);
-  padding: 5px;
-  cursor: pointer;
-}
-
-.see-all-posts a {
-  text-decoration: none;
 }
 
 .user-posts .post-info {
