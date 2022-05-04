@@ -1,4 +1,5 @@
-.post-comments-list {
+.post-comments-list,
+.comments-list {
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -6,11 +7,13 @@
   border: 1px solid grey;
 }
 
-.post-comments-list li {
+.post-comments-list li,
+.comments-list li {
   padding: 5px;
 }
 
-.post-comments-list li .comment-author {
+.post-comments-list li .comment-author,
+.comments-list li .comment-author {
   font-size: 16px;
   font-weight: 600;
 }
@@ -44,4 +47,36 @@
 .post-details .comments-list .author {
   font-size: 16px;
   font-weight: 600;
+}
+
+.create-new-post {
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.create-new-post a {
+  text-decoration: none;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 600;
+}
+
+.create-new-post a:hover {
+  background-color: blue;
+  color: #fff;
+}
+
+.comment-like-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.btn-like {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
 }

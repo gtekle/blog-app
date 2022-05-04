@@ -10,13 +10,20 @@
     <h3> Bio </h3>
     <p> <%= @user.bio%></p>
   </div>
+
+  <div class="create-new-post">
+    <%= link_to "create new post", new_user_post_path(@user) %>
+  </div>
+  
   <ul class="user-recent-posts">
     <% if @user.posts.nil? || @user.posts.empty?%>
       <li> No posts available from <%= @user.name %>, yet! </li>
     <%end%>
-    <% @user.most_recent_posts&.each_with_index do |post, indx|%>
+    <% @user.most_recent_posts&.each do |post|%>
       <li>
-        <p class="user-post-heading"> Post #<%= indx + 1 %> </p>
+        <p class="user-post-heading">
+          <%= link_to post.title.upcase, user_post_path(@user, post) %>
+        </p>
         <p class="post_text"><%= post.text %></p>
         <p class="comment-counter">
           comments: <%= post.comments_counter %>,
@@ -25,5 +32,7 @@
       </li>
     <%end%>
   </ul>
-  <a href="/users/<%= @user.id %>/posts" class="see-all-posts">See all posts </a>
+  <div class="see-all-posts">
+    <%= link_to "See all posts", user_posts_path(@user) %>
+  </div>
 </section>

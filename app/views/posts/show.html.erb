@@ -1,16 +1,25 @@
 <section class="post-details">
+  <h2> Post </h2>
   <div class="post-info">
     <div class="header">
       <p class="post_title">
-        Post <strong><%= @post.title %></strong>
-        by <strong><%= @post.author.name %></strong>
+        <strong><%= @post.title %></strong>
+        - By <strong><%= @post.author.name %></strong>
       </p>
       <p class="comment-counter">
-        comments: <%= @post.comments_counter %>
-        likes: <%= @post.likes_counter %>
+        comments: <strong><%= @post.comments_counter %></strong>,
+        likes: <strong><%= @post.likes_counter %></strong>
       </p>
     </div>
     <p class="post_text"><%= @post.text %></p>
+  </div>
+  <div class="comment-like-container">
+    <h3> Comments </h3>
+      <%= form_with model: [ @post.author, @post, @post.likes.build ] do |form| %>
+      <%= button_tag( :class => "btn-like") do %>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
   </div>
   <ul class="comments-list">
     <% if @post.comments.nil? || @post.comments.empty?%>
@@ -23,5 +32,13 @@
       </li>
     <% end %>
   </ul>
+  <h3>Please, leave your comment</h3>
+  <%= form_with model: [ @post.author, @post, @post.comments.build ] do |form| %>
+    <p>
+      <%= form.label :text, "Comment" %> <br>
+      <%= form.text_area :text, rows: 5, columns: 100 %>
+    </p>
+    <p><%= form.submit %></p>
+  <% end %>
 </li>
 </section>
