@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  first_user = User.first
+  first_user = User.new(name: 'Peter',
+                        photo: 'photo_url',
+                        bio: 'This is a bio for Mr. Peter!',
+                        posts_counter: 0)
+  first_user.save
 
   first_post = Post.new(author_id: first_user.id, title: 'post-title1', text: 'post body one')
 
