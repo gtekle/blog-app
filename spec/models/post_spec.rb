@@ -51,22 +51,20 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'most_recent_posts method' do
-    post = Post.first
-
     before do
-      post.comments.create(author_id: first_user.id, text: 'comment one')
-      post.comments.create(author_id: first_user.id, text: 'comment two')
-      post.comments.create(author_id: first_user.id, text: 'comment three')
-      post.comments.create(author_id: first_user.id, text: 'comment four')
-      post.comments.create(author_id: first_user.id, text: 'comment five')
-      post.comments.create(author_id: first_user.id, text: 'comment six')
-      post.comments.create(author_id: first_user.id, text: 'comment seven')
-      post.comments.create(author_id: first_user.id, text: 'comment eight')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment one')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment two')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment three')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment four')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment five')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment six')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment seven')
+      Comment.create(post: first_post, author_id: first_user.id, text: 'comment eight')
     end
 
     it 'should return up to five latest comments' do
-      expect(post.most_recent_comments.length).to be <= 5
-      expect(post.most_recent_comments[0].text).to eq 'comment eight'
+      expect(first_post.most_recent_comments.length).to be <= 5
+      expect(first_post.most_recent_comments[0].text).to eq 'comment eight'
     end
   end
 end
