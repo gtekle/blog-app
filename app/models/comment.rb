@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
 
   after_save :update_post_comments_counter
 
+  private
+
   def update_post_comments_counter
     post = Post.find(post_id)
     post.update(comments_counter: post.comments_counter + 1)
