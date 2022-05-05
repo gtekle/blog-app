@@ -14,15 +14,22 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @post = @user.posts.create(post_params)
+    @post = Post.new(post_params)
+
     respond_to do |format|
-      format.html { redirect_to user_posts_path(@user), notice: 'Post successfully created!' } if @post
+      if @post.save
+        format.html { redirect_to user_posts_path(@user), success: 'Post successfully created!' }
+      else
+        format.html { redirect_to user_posts_path(@user), danger: 'Post was not created!' }
+      end
     end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    post_hash = params.require(:post).permit(:title, :text)
+    post_hash[:author] = User.find(params[:user_id])
+    post_hash
   end
 end

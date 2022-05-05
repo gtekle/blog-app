@@ -4,13 +4,15 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment = Comment.new(comment_params)
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
+
     respond_to do |format|
-      if @post.save
-        format.html do
-          redirect_to user_post_path(User.find(params[:user_id]), @post), notice: 'Comment successfully created!'
-        end
+      if @comment.save
+        format.html { redirect_to user_post_path(@user, @post), success: 'comment successfully created!' }
+      else
+        format.html { redirect_to user_post_path(@user, @post), danger: 'comment is not created!' }
       end
     end
   end
@@ -20,6 +22,7 @@ class CommentsController < ApplicationController
   def comment_params
     comment_hash = params.require(:comment).permit(:text)
     comment_hash[:author] = current_user
+    comment_hash[:post] = Post.find(params[:post_id])
     comment_hash
   end
 end
