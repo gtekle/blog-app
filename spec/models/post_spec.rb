@@ -63,7 +63,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'should return up to five latest comments' do
-      expect(first_post.most_recent_comments.length).to be <= 5
+      expect(first_post.most_recent_comments.length).to be(5)
       expect(first_post.most_recent_comments[0].text).to eq 'comment eight'
     end
   end

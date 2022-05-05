@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
                   bio: 'This is a bio for Mr. Peter!',
                   posts_counter: 0)
 
-  before { user.save }
+  before(:all) { user.save }
 
   describe 'validate data: ' do
     it 'name should be present' do
@@ -28,18 +28,16 @@ RSpec.describe User, type: :model do
   end
 
   describe 'most_recent_posts method' do
-    user1 = User.first
-
     before do
-      user1.posts.create(title: 'post-title1', text: 'post body one')
-      user1.posts.create(title: 'post-title2', text: 'post body two')
-      user1.posts.create(title: 'post-title3', text: 'post body three')
-      user1.posts.create(title: 'post-title4', text: 'post body four')
+      Post.create(author_id: user.id, title: 'post-title1', text: 'post body one')
+      Post.create(author_id: user.id, title: 'post-title2', text: 'post body two')
+      Post.create(author_id: user.id, title: 'post-title3', text: 'post body three')
+      Post.create(author_id: user.id, title: 'post-title4', text: 'post body four')
     end
 
-    it 'should return up to three latest posts' do
-      expect(user1.most_recent_posts.length).to be <= 3
-      expect(user1.most_recent_posts[0].title).to eq 'post-title4'
+    it 'should return three latest posts' do
+      expect(user.most_recent_posts.length).to eq(3)
+      expect(user.most_recent_posts[0].title).to eq 'post-title4'
     end
   end
 end
