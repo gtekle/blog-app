@@ -25,7 +25,7 @@
     <% if @post.comments.nil? || @post.comments.empty?%>
       <li> No comments, yet! Be the first to comment!</li>
     <%end%>
-    <%@post.comments.each do |comment|%>
+    <%@post.comments.includes([:author]).each do |comment|%>
       <li>
         <span class="author"><%= comment.author.name %>:</span>
         <span><%= comment.text %>:</span>

@@ -14,7 +14,7 @@
   <% if @user.posts.nil? || @user.posts.empty?%>
     <li> No posts available from <%= @user.name %>, yet! </li>
   <%end%>
-  <% @user.posts&.each_with_index do |post, indx|%>
+  <% @user.posts.includes([:comments])&.each_with_index do |post, indx|%>
     <li>
       <div class="post-info">
         <p class="user-post-heading">
@@ -28,7 +28,8 @@
       </div>
 
       <ul class="post-comments-list">
-        <% if post.comments.nil? || post.comments.empty?%>
+        <% if post.comments.nil? ||
+          post.comments.empty? %>
           <li> No comments, yet! Be the first to comment!</li>
         <%end%>
         <%post.most_recent_comments.each do |comment|%>

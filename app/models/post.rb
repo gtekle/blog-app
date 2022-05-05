@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   after_save :update_user_posts_counter
 
   def most_recent_comments
-    Comment.order(created_at: :desc).where(post_id: id).first(5)
+    Comment.includes(:author).order(created_at: :desc).where(post_id: id).first(5)
   end
 
   private
