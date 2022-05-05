@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   first_user = User.first
-  first_post = first_user.posts.create(title: 'post-title1', text: 'post body one')
 
-  before(:all) { first_user.save }
+  first_post = Post.new(author_id: first_user.id, title: 'post-title1', text: 'post body one')
+
+  before(:all) { first_post.save }
 
   describe 'validate data: ' do
     it 'title should be present' do
