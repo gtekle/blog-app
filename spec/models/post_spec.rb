@@ -50,7 +50,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe 'most_recent_posts method' do
+  describe 'most_recent_comments method' do
     before do
       Comment.create(post: first_post, author_id: first_user.id, text: 'comment one')
       Comment.create(post: first_post, author_id: first_user.id, text: 'comment two')
