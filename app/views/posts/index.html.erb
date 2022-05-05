@@ -8,9 +8,7 @@
 
 <div class="create-new-post">
   <%= link_to "create new post", new_user_post_path(@user) %>
-  <% if flash[:notice].present? %>
-    <p class='flash-notice'><%= flash[:notice] %></p>
-  <% end %>
+  <%= render "layouts/flash-messages" %>
 </div>
 <ul class="user-posts">
   <% if @user.posts.nil? || @user.posts.empty?%>

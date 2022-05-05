@@ -21,6 +21,9 @@
       <% end %>
     <% end %>
   </div>
+
+  <%= render "layouts/flash-messages" %>
+
   <ul class="comments-list">
     <% if @post.comments.nil? || @post.comments.empty?%>
       <li> No comments, yet! Be the first to comment!</li>
@@ -39,9 +42,6 @@
       <%= form.text_area :text, rows: 5, columns: 100 %>
     </p>
     <p><%= form.submit %></p>
-  <% end %>
-  <% if flash[:notice].present? %>
-    <p class='flash-notice'><%= flash[:notice] %></p>
   <% end %>
 </li>
 </section>
