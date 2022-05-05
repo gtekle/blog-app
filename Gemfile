@@ -35,6 +35,8 @@ gem 'pry-rails'
 
 gem 'jquery-rails'
 
+gem 'ffi'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

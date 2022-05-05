@@ -25,6 +25,12 @@ RSpec.describe Post, type: :model do
       expect(first_post).to_not be_valid
     end
 
+    it 'when comments_counter value is valid integer' do
+      first_post.title = 'post-title1'
+      first_post.comments_counter = 1
+      expect(first_post).to be_valid
+    end
+
     it 'comments_counter should be greater than or equal to zero' do
       first_post.title = 'post-title1'
       first_post.comments_counter = -1
@@ -36,6 +42,14 @@ RSpec.describe Post, type: :model do
       first_post.comments_counter = 'one'
       expect(first_post).to_not be_valid
     end
+
+    it 'when likes_counter value is valid integer' do
+      first_post.title = 'post-title1'
+      first_post.comments_counter = 1
+      first_post.likes_counter = 1
+      expect(first_post).to be_valid
+    end
+
     it 'likes_counter should be greater than or equal to zero' do
       first_post.title = 'post-title1'
       first_post.comments_counter = 1
@@ -46,6 +60,7 @@ RSpec.describe Post, type: :model do
     it 'likes_counter value should be integer' do
       first_post.title = 'post-title1'
       first_post.comments_counter = 1
+      first_post.likes_counter = 'one'
       expect(first_post).to_not be_valid
     end
   end
