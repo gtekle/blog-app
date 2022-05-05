@@ -40,5 +40,8 @@
     </p>
     <p><%= form.submit %></p>
   <% end %>
+  <% if flash[:notice].present? %>
+    <p class='flash-notice'><%= flash[:notice] %></p>
+  <% end %>
 </li>
 </section>

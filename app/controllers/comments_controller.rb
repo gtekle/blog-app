@@ -6,7 +6,13 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    redirect_to user_post_path(User.find(params[:user_id]), @post)
+    respond_to do |format|
+      if @post.save
+        format.html do
+          redirect_to user_post_path(User.find(params[:user_id]), @post), notice: 'Comment successfully created!'
+        end
+      end
+    end
   end
 
   private

@@ -15,7 +15,9 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.create(post_params)
-    redirect_to user_posts_path(@user)
+    respond_to do |format|
+      format.html { redirect_to user_posts_path(@user), notice: 'Post successfully created!' } if @post
+    end
   end
 
   private

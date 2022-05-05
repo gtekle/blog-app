@@ -14,8 +14,8 @@ RSpec.describe Post, type: :model do
 
     it 'title length should be less than 250 characters' do
       first_post.title = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Aliquam pellentesque risus nisi, et malesuada nisl vestibulum id. Curabitur 
-      scelerisque, turpis vulputate suscipit viverra, elit tellus tincidunt est, 
+      Aliquam pellentesque risus nisi, et malesuada nisl vestibulum id. Curabitur
+      scelerisque, turpis vulputate suscipit viverra, elit tellus tincidunt est,
       sit amet finibus augue est vitae urna. Aenean rhoncus quis augue eu pulvinar.'
       expect(first_post).to_not be_valid
     end
