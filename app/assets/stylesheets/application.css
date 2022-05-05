@@ -24,3 +24,23 @@ img {
   width: 100%;
   height: auto;
 }
+
+.alert-success,
+.alert-danger {
+  margin: 10px 0;
+}
+
+.alert-success {
+  background-color: lightgreen;
+  color: blue;
+  align-self: center;
+  padding: 5px;
+}
+
+.alert-danger {
+  background-color: #fff;
+  border: 1px solid red;
+  color: red;
+  align-self: center;
+  padding: 5px;
+}

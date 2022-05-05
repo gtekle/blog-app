@@ -33,6 +33,10 @@ gem 'jbuilder'
 # Causes rails console to open pry [https://github.com/pry/pry-rails]
 gem 'pry-rails'
 
+gem 'jquery-rails'
+
+gem 'ffi'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -69,6 +73,12 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
+
+  # Bullet gem will watch your queries while you develop your application and notify
+  # you when you should add eager loading (N+1 queries), when you're using
+  # eager loading that isn't necessary and when you should use counter cache.
+  # [https://github.com/flyerhzm/bullet]
+  gem 'bullet'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
