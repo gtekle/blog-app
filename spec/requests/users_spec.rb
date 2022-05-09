@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'page contains text' do
-      expect(response.body).to include('ALL USERS')
+      expect(response.body).to include('All Users')
     end
   end
 
