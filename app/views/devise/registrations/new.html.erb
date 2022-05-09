@@ -5,7 +5,17 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'mail@example.com' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "name", placeholder: 'John' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.text_field :photo, placeholder: 'https://www.istockphoto.com/vector/default-profile-picture-avatar-photo.png' %>
   </div>
 
   <div class="field">
@@ -22,7 +32,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", data: { turbo: false } %>
   </div>
 <% end %>
 
