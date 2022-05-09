@@ -1,0 +1,11 @@
+<header class="container">
+  <nav>
+   <ul class="flex">
+   <% if user_signed_in? %>
+     <li><%= link_to "Home", root_path %></li>
+     <li><%= link_to "All posts" %></li>
+     <li><%= link_to "Sign out", destroy_user_session_path,method: :delete, class: "logout" %></li>
+     <%end%>
+   </ul>
+  </nav>
+</header>
