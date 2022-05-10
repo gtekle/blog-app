@@ -40,6 +40,9 @@ gem 'jquery-rails'
 
 gem 'ffi'
 
+# To define user permissions [https://github.com/CanCanCommunity/cancancan]
+gem 'cancancan'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
