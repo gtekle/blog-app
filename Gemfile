@@ -74,6 +74,11 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec'
   gem 'rspec-rails'
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
+  # The following gems aids with the nuts and bolts
+  # of interacting with the browser.
+  gem 'webdrivers'
 end
 
 group :development do
