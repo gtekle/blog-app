@@ -98,9 +98,22 @@
   margin: 0;
 }
 
-.user-recent-posts li .user-post-heading {
+.user-recent-posts li .user-post-heading,
+.user-posts li .user-post-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 18px;
   font-weight: 500;
+}
+
+.user-recent-posts li .user-post-heading button,
+.user-posts li .user-post-heading button {
+  border: 1px solid red;
+  background-color: transparent;
+  color: red;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .user-recent-posts li .comment-counter {

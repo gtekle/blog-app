@@ -72,9 +72,8 @@ img {
 }
 
 .header {
-  border: 1px solid red;
   display: flex;
-  align-items: cen;
+  align-items: center;
   justify-content: space-between;
 }
 
