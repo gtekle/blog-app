@@ -18,6 +18,7 @@
       <div class="post-info">
         <p class="user-post-heading">
           <%= link_to post.title.upcase, user_post_path(@user, post) %>
+          <%= button_to "Delete", user_post_path(@user, post), method: :delete %>
         </p>
         <p class="post_text"><%= post.text %></p>
         <p class="comment-counter">

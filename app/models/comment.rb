@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
 
   validates :text, presence: true
 
-  after_save :update_post_comments_counter
+  after_create :update_post_comments_counter
 
   private
 
