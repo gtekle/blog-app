@@ -1,12 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  User.delete_all
   user = User.new(name: 'Peter',
+                  email: 'peter@example.com',
                   photo: 'photo_url',
                   bio: 'This is a bio for Mr. Peter!',
                   posts_counter: 0)
+  user.save
 
-  before(:all) { user.save }
+  before(:all) do
+    User.delete_all
+    user.save
+    user.confirm
+    sign_in user
+  end
 
   describe 'validate data: ' do
     it 'name should be present' do

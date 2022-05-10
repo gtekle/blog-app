@@ -21,9 +21,7 @@
       <% end %>
     <% end %>
   </div>
-
-  <%= render "layouts/flash-messages" %>
-
+  
   <ul class="comments-list">
     <% if @post.comments.nil? || @post.comments.empty?%>
       <li> No comments, yet! Be the first to comment!</li>

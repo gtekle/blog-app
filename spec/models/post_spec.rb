@@ -1,16 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  User.delete_all
   first_user = User.new(name: 'Peter',
+                        email: 'peter@example.com',
                         photo: 'photo_url',
                         bio: 'This is a bio for Mr. Peter!',
                         posts_counter: 0)
   first_user.save
 
   first_post = Post.new(author_id: first_user.id, title: 'post-title1', text: 'post body one')
+  first_post.save
 
-  before(:all) { first_post.save }
-
+  before(:all) do
+    first_user.save
+    first_user.confirm
+    sign_in first_user
+    first_post.save
+  end
   describe 'validate data: ' do
     it 'title should be present' do
       first_post.title = ''
@@ -28,6 +35,7 @@ RSpec.describe Post, type: :model do
     it 'when comments_counter value is valid integer' do
       first_post.title = 'post-title1'
       first_post.comments_counter = 1
+      first_post.author_id = first_user.id
       expect(first_post).to be_valid
     end
 
@@ -44,6 +52,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'when likes_counter value is valid integer' do
+      first_post.author_id = first_user.id
       first_post.title = 'post-title1'
       first_post.comments_counter = 1
       first_post.likes_counter = 1
@@ -67,14 +76,15 @@ RSpec.describe Post, type: :model do
 
   describe 'most_recent_comments method' do
     before do
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment one')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment two')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment three')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment four')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment five')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment six')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment seven')
-      Comment.create(post: first_post, author_id: first_user.id, text: 'comment eight')
+      first_post = Post.create(author_id: first_user.id, title: 'post-title1', text: 'post body one')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment one')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment two')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment three')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment four')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment five')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment six')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment seven')
+      Comment.create(post_id: first_post.id, author_id: first_user.id, text: 'comment eight')
     end
 
     it 'should return up to five latest comments' do

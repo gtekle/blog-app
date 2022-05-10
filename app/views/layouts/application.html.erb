@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <main class="container">
+      <%= render "layouts/flash-messages" %>
+      <%= yield %>
+    </main>
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
   </body>
 </html>
