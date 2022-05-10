@@ -36,6 +36,9 @@
           <li>
             <span class="comment-author"><%= comment.author.name %>:</span>
             <span><%= comment.text %>:</span>
+            <% if can? :manage, comment %>
+              <%= button_to "Delete", user_post_comment_path(comment.author, post, comment), method: :delete %>
+            <% end %>
           </li>
         <% end %>
       </ul>

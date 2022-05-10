@@ -6,11 +6,18 @@ class Ability
     #
     # guest user (not logged in)
     user ||= User.new
-    if user.admin?
-      can :manage, :all
-    else
-      can :read, :all
-    end
+
+    can :read, Post
+    can :read, Comment
+
+    return unless user.present?
+
+    can :manage, Post, author_id: user.id
+    can :manage, Comment, author_id: user.id
+
+    return unless user.admin?
+
+    can :manage, :all
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

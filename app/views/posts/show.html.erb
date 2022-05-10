@@ -30,7 +30,9 @@
       <li>
         <span class="author"><%= comment.author.name %>:</span>
         <span><%= comment.text %>:</span>
-        <%= button_to "Delete", user_post_comment_path(@post.author, @post, comment), method: :delete %>
+        <% if can? :manage, comment %>
+          <%= button_to "Delete", user_post_comment_path(@post.author, @post, comment), method: :delete %>
+        <% end %>
       </li>
     <% end %>
   </ul>
