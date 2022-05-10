@@ -1,8 +1,13 @@
 
-<header class="container d-flex flex-justify-content-between">
+<header class="container header d-flex flex-justify-content-between">
   <div class="logo">
     <%= link_to "Blog App", root_path %>
   </div>
+  <% if user_signed_in? %>
+    <div>
+      <p> Logged in as: <strong><%= current_user.name %><strong></p>
+    </div>
+  <% end %>
   <nav class="navbar">
     <ul class="nav-list">
       <% if user_signed_in? %>

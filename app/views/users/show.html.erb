@@ -21,9 +21,12 @@
     <%end%>
     <% @user.most_recent_posts&.each do |post|%>
       <li>
-        <p class="user-post-heading">
+        <div class="user-post-heading">
           <%= link_to post.title.upcase, user_post_path(@user, post) %>
-        </p>
+          <% if can? :manage, post %>
+            <%= button_to "Delete", user_post_path(@user, post), method: :delete %>
+          <% end %>
+        </div>
         <p class="post_text"><%= post.text %></p>
         <p class="comment-counter">
           comments: <%= post.comments_counter %>,

@@ -16,9 +16,12 @@
   <% @user.posts.includes([:comments])&.each_with_index do |post, indx|%>
     <li>
       <div class="post-info">
-        <p class="user-post-heading">
+        <div class="user-post-heading">
           <%= link_to post.title.upcase, user_post_path(@user, post) %>
-        </p>
+          <% if can? :manage, post %>
+            <%= button_to "Delete", user_post_path(@user, post), method: :delete %>
+          <% end %>
+        </div>
         <p class="post_text"><%= post.text %></p>
         <p class="comment-counter">
           comments: <%= post.comments_counter %>,
@@ -35,6 +38,9 @@
           <li>
             <span class="comment-author"><%= comment.author.name %>:</span>
             <span><%= comment.text %>:</span>
+            <% if can? :manage, comment %>
+              <%= button_to "Delete", user_post_comment_path(comment.author, post, comment), method: :delete %>
+            <% end %>
           </li>
         <% end %>
       </ul>

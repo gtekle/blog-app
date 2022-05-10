@@ -64,10 +64,21 @@ img {
 
 .d-flex {
   display: flex;
+  align-items: center;
 }
 
 .flex-justify-content-between {
   justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header > * {
+  flex: 1;
 }
 
 .logo {
@@ -99,7 +110,7 @@ img {
   font-weight: 500;
   border: 1px solid blue;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 10px;
 }
 
 .nav-list .nav-item button {
@@ -108,6 +119,8 @@ img {
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
+  cursor: pointer;
+  border: none;
 }
 
 .new_user {
