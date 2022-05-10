@@ -16,8 +16,13 @@
  */
 
 body {
-  max-width: 90%;
-  margin: auto;
+  font-size: 16px;
+}
+
+body a {
+  text-decoration: underline;
+  color: blue;
+  margin: 10px 0;
 }
 
 img {
@@ -43,4 +48,101 @@ img {
   color: red;
   align-self: center;
   padding: 5px;
+}
+
+.container {
+  max-width: 90%;
+  margin: 10px auto;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-justify-content-between {
+  justify-content: space-between;
+}
+
+.logo {
+  flex: 1;
+}
+
+.logo a {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.navbar {
+  flex: 2;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+  flex: 1;
+}
+
+.nav-list .nav-item a {
+  text-decoration: none;
+  font-size: 12px;
+  color: blue;
+  font-weight: 500;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.nav-list .nav-item button {
+  color: #fff;
+  background-color: blue;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.new_user {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.new_user > * {
+  width: 100%;
+}
+
+.new_user > * input[type=text],
+.new_user > * input[type=password],
+.new_user > * input[type=email] {
+  outline: none;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.new_user > * input[type=submit] {
+  background-color: blue;
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }

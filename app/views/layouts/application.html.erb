@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <%= render "layouts/header" %>
     <main class="container">
-      <div class="m-auto w-84 md:w-96">
-        <%= render "layouts/flash-messages" %>
-        <%= yield %>
-      </div>
+      <%= render "layouts/flash-messages" %>
+      <%= yield %>
     </main>
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
   </body>
 </html>

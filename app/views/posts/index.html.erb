@@ -8,7 +8,6 @@
 
 <div class="create-new-post">
   <%= link_to "create new post", new_user_post_path(@user) %>
-  <%= render "layouts/flash-messages" %>
 </div>
 <ul class="user-posts">
   <% if @user.posts.nil? || @user.posts.empty?%>

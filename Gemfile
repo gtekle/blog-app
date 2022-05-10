@@ -90,7 +90,7 @@ group :development do
   # gem "spring"
 
   # Helps preview email in the default browser instead of sending it.
-  gem "letter_opener"
+  gem 'letter_opener'
 end
 
 group :test do
@@ -100,4 +100,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "tailwindcss-rails", "~> 2.0"
+gem 'tailwindcss-rails', '~> 2.0'

@@ -4,6 +4,8 @@ RSpec.describe 'Posts', type: :request do
   describe 'GET "/users/1/posts"' do
     before(:example) do
       user = User.create(name: 'Peter', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
+      user.confirm
+      sign_in user
       Post.create(author: user, title: 'Hello', text: 'This is my first post')
       get "/users/#{user.id}/posts"
     end
@@ -23,7 +25,10 @@ RSpec.describe 'Posts', type: :request do
 
   describe 'GET "/users/1/posts/9"' do
     before(:example) do
-      user = User.create(name: 'Peter', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
+      User.delete_all
+      user = User.create(name: 'Peter', email: 'teklegy@gmail.com', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'A farmer in Tigrai.')
+      user.confirm
+      sign_in user
       post = Post.create(author: user, title: 'Hello', text: 'This is my first post')
       get "/users/#{user.id}/posts/#{post.id}"
     end
