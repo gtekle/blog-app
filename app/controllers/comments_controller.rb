@@ -10,9 +10,25 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user_post_path(@user, @post), success: 'comment successfully created!' }
+        format.html { redirect_to user_post_path(@user, @post), success: 'Comment successfully created!' }
       else
-        format.html { redirect_to user_post_path(@user, @post), danger: 'comment is not created!' }
+        format.html { redirect_to user_post_path(@user, @post), danger: 'Comment is not created!' }
+      end
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+
+    Comment.destroy(@comment.id)
+
+    respond_to do |format|
+      if Comment.find(params[:id]).nil?
+        format.html { redirect_to user_post_path(@user, @post), success: 'Comment successfully deleted!' }
+      else
+        format.html { redirect_to user_post_path(@user, @post), danger: 'Comment is not deleted!' }
       end
     end
   end
