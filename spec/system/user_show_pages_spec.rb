@@ -40,7 +40,7 @@ RSpec.describe 'UserShowPages', type: :system do
     click_link('Test')
 
     expect(page).to have_content 'Bio'
-    expect(page).to have_content 'Number of posts: 3'
+    expect(page).to have_content 'Number of posts: 1'
     expect(page).to have_link 'create new post'
     expect(page).to have_css('ul.user-recent-posts')
     expect(page).to have_css('a', text: 'POST TITLE ONE')

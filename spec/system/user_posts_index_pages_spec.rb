@@ -43,7 +43,7 @@ RSpec.describe 'UserPostsIndexPages', type: :system do
     click_link 'See all posts'
 
     expect(current_path).to eq user_posts_path(user)
-    expect(page).to have_content 'Number of posts: 3'
+    expect(page).to have_content 'Number of posts: 1'
     expect(page).to have_link 'create new post'
     expect(page).to have_css('ul.post-comments-list')
     expect(page).to have_css('a', text: 'POST TITLE ONE')
