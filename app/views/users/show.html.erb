@@ -15,7 +15,7 @@
     <%= link_to "create new post", new_user_post_path(@user) %>
   </div>
   
-  <ul class="user-recent-posts">
+  <ul class="user-recent-posts" id="user-recent-posts">
     <% if @user.posts.nil? || @user.posts.empty?%>
       <li> No posts available from <%= @user.name %>, yet! </li>
     <%end%>
