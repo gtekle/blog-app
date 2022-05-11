@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UserShowPages", type: :system do
+RSpec.describe "UserPostsIndexPages", type: :system do
   before :all do
     # Comment the line below this to see selinium open chrome browser
     # driven_by(:rack_test)
@@ -19,7 +19,6 @@ RSpec.describe "UserShowPages", type: :system do
     user = User.find_by(email: "test@test.com");
     user.confirm
   end
-
 
   it "renders user show page" do
     visit '/users/sign_in'
@@ -47,31 +46,38 @@ RSpec.describe "UserShowPages", type: :system do
     fill_in 'Text', with: 'Post body three'
     find('input[name="commit"]').click
     
+    user = User.find_by(email: 'test@test.com')
+    post = Post.find_by(title: 'Post title one')
     
     visit '/users/'
-    click_link('Test')
+    click_link('Test')    
+    click_link 'See all posts'
     
-    expect(page).to have_content 'Bio'
+    expect(current_path).to eq user_posts_path(user)
     expect(page).to have_content 'Number of posts: 3'
     expect(page).to have_link 'create new post'
-    expect(page).to have_css('ul.user-recent-posts')
+    expect(page).to have_css('ul.user-posts')
+    expect(page).to have_css('ul.post-comments-list')
     expect(page).to have_css("a", :text => 'POST TITLE ONE')
     expect(page).to have_css("a", :text => 'POST TITLE TWO')
     expect(page).to have_css("a", :text => 'POST TITLE THREE')
+    expect(page).to have_css("p", :text => 'Post body one')
     expect(page).to have_css("img[src*='https://png.pngtree.com/png-clipart/20210308/original/pngtree-a-squatting-british-short-blue-and-white-cat-png-image_5794547.jpg']")
-    expect(page).to have_css("a", :text => 'See all posts')
-    
-    user = User.find_by(email: 'test@test.com')
-    post = Post.find_by(title: 'Post title one')
-
-    click_link 'See all posts'
-    expect(current_path).to eq user_posts_path(user)
-    expect(page).to have_css('ul.user-posts')
-
 
     click_link 'POST TITLE ONE'
+    fill_in 'Comment', with: 'This is my first comment'
+    find('input[name="commit"]').click
 
-    expect(page).to have_content('Post')
+    fill_in 'Comment', with: 'This is my second comment'
+    find('input[name="commit"]').click
+
+    visit user_posts_path(user)
+
+    expect(page).to have_content "#{user.name}: This is my first comment"
+    expect(page).to have_content "comments: 2, likes: 0"
+    
+    click_link 'POST TITLE ONE'
+    expect(page).to have_content "Post"
     expect(current_path).to eq user_post_path(user, post)
   end
 end
