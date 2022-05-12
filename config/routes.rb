@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  
+
   Rails.application.routes.draw do
-    devise_for :users, controllers: {
+    devise_for :users, controllers: do
       sessions: 'users/sessions'
       registrations: 'users/registrations'
-    }
+    end
   end
 
   namespace :api, defaults: {format: 'json'} do
