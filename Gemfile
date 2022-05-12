@@ -27,6 +27,8 @@ gem 'turbo-rails'
 # Use the devise gem as the session and account manager for the application
 gem 'devise'
 
+gem 'devise-jwt'
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
 

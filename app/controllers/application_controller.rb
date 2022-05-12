@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :danger, :info, :warning, :success, :messages
-
+  skip_before_action :verify_authenticity_token
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
