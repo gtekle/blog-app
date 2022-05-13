@@ -60,6 +60,8 @@ gem 'bootsnap', require: false
 
 gem 'rack-cors'
 
+gem 'jwt'
+
 gem 'font-awesome-rails'
 
 # Use Sass to process CSS
