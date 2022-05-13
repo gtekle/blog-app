@@ -1,7 +1,7 @@
 class Api::V1::CommentsController < Api::V1::BaseController
   def index
     @comments = Comment.where(post_id: params[:post_id])
-    render json: @comments, status: :success
+    render json: @comments, status: 200
   end
 
   def create
