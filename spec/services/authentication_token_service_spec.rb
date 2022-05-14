@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe AuthenticationTokenService do
   describe '.encode' do
+    let(:token) { described_class.encode(1) }
+
     it 'returns an authentication token' do
-      token = described_class.encode
       decoded_token = JWT.decode(
         token,
         described_class::HMAC_SECRET,
@@ -12,7 +13,7 @@ RSpec.describe AuthenticationTokenService do
       )
       expect(decoded_token).to eq(
         [
-          { 'test' => 'blah' },
+          { 'user_id' => 1 },
           { 'alg' => 'HS256' }
         ]
       )

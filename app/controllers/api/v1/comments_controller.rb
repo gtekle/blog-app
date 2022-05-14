@@ -6,6 +6,7 @@ class Api::V1::CommentsController < Api::V1::BaseController
 
   def create
     @comment = Comment.new(comment_params)
+    p request.headers['Authorization'].split.last
 
     if @comment.save
       render json: @comment, status: 201
