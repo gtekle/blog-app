@@ -1,5 +1,4 @@
 class Api::V1::AuthenticationController < Api::V1::BaseController
-
   class AuthenticationError < StandardError; end
 
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
