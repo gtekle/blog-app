@@ -10,7 +10,8 @@ Rails.application.routes.draw do
           end
         end
       end
-    end
+      post '/auth', to: 'authentication#create'
+    end    
   end
 
   # Define web application routes per the DSL in https://guides.rubyonrails.org/routing.html

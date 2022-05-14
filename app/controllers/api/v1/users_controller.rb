@@ -1,6 +1,8 @@
 class Api::V1::UsersController < Api::V1::BaseController
+  before_action :authenticate_user
+
   def index
-    @users = Post.all
+    @users = User.all
     render json: @users, status: 200
   end
 

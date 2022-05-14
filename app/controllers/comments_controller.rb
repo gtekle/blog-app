@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     Comment.destroy(@comment.id)
 
     respond_to do |format|
-      if Comment.find(params[:id]).nil?
+      if Comment.find(params[:id]).empty?
         format.html { redirect_to user_post_path(@user, @post), success: 'Comment successfully deleted!' }
       else
         format.html { redirect_to user_post_path(@user, @post), danger: 'Comment is not deleted!' }
