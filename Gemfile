@@ -62,6 +62,8 @@ gem 'rack-cors'
 
 gem 'font-awesome-rails'
 
+gem 'rswag'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
