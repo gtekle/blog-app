@@ -8,7 +8,10 @@ describe 'Athentication', type: :request do
       post '/api/v1/auth', params: { email: user.email, password: user.password }
 
       expect(response).to have_http_status(:created)
-      expect(JSON(response.body)).to eq({ 'token' => '123' })
+
+      token = JSON.parse(response.body)['token']
+
+      expect { JWT.decode(token, AuthenticationTokenService::HMAC_SECRET) }.to_not raise_error(JWT::DecodeError)
     end
 
     it 'returns error when email is missing' do
@@ -23,6 +26,12 @@ describe 'Athentication', type: :request do
 
       expect(response).to have_http_status(:unprocessable_entity)
       expect(JSON(response.body)).to eq({ 'error' => 'param is missing or the value is empty: password' })
+    end
+
+    it 'returns error when password is incorrect' do
+      post '/api/v1/auth', params: { email: user.email, password: '123456' }
+
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 end
