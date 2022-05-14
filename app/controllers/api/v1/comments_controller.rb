@@ -1,6 +1,4 @@
 class Api::V1::CommentsController < Api::V1::BaseController
-  include ActionController::HttpAuthentication::Token
-
   before_action :authenticate_user, only: %i[create destroy]
 
   def index
@@ -27,11 +25,5 @@ class Api::V1::CommentsController < Api::V1::BaseController
     comment_hash[:author] = authenticate_user
     comment_hash[:post] = Post.find(params[:post_id])
     comment_hash
-  end
-
-  def authenticate_user
-    token, _options = token_and_options(request)
-    user_id = AuthenticationTokenService.decode(token)
-    User.find(user_id)
   end
 end
