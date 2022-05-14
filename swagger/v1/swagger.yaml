@@ -1,0 +1,27 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users":
+    get:
+      summary: get list of users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: users fetched
+  "/api/v1/users/{id}":
+    get:
+      summary: Retrieves a user
+      tags:
+      - User
+      responses:
+        '200':
+          description: user found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
